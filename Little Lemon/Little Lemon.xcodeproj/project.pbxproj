@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		279FA0D129A712170001ABA3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279FA0D029A712170001ABA3 /* Home.swift */; };
+		279FA0D329A712910001ABA3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279FA0D229A712910001ABA3 /* Menu.swift */; };
 		27B0E44229A1EFE90023632F /* Little_LemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B0E44129A1EFE90023632F /* Little_LemonApp.swift */; };
 		27B0E44629A1EFED0023632F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B0E44529A1EFED0023632F /* Assets.xcassets */; };
 		27B0E44929A1EFED0023632F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B0E44829A1EFED0023632F /* Preview Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		279FA0D029A712170001ABA3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		279FA0D229A712910001ABA3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		27B0E43E29A1EFE90023632F /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B0E44129A1EFE90023632F /* Little_LemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Little_LemonApp.swift; sourceTree = "<group>"; };
 		27B0E44529A1EFED0023632F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 			isa = PBXGroup;
 			children = (
 				27B0E44129A1EFE90023632F /* Little_LemonApp.swift */,
+				279FA0D029A712170001ABA3 /* Home.swift */,
+				279FA0D229A712910001ABA3 /* Menu.swift */,
 				27B6231C29A6EAC700B036A1 /* Onboarding.swift */,
 				27B0E44529A1EFED0023632F /* Assets.xcassets */,
 				27B0E44729A1EFED0023632F /* Preview Content */,
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B6231D29A6EAC700B036A1 /* Onboarding.swift in Sources */,
+				279FA0D129A712170001ABA3 /* Home.swift in Sources */,
+				279FA0D329A712910001ABA3 /* Menu.swift in Sources */,
 				27B0E44229A1EFE90023632F /* Little_LemonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
