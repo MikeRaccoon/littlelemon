@@ -10,6 +10,9 @@ import SwiftUI
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var searchText: String = ""
+    @State private var categoryName = ""
+    @State private var categorySelected = false
+    private let MenuCategoryNames = ["starters", "mains", "desserts", "drinks"]
     
     var body: some View {
         VStack {
@@ -57,6 +60,39 @@ struct Menu: View {
             .padding(.top, 10)
             .padding(.bottom, 5)
             .background(colorFromHex("394C45"))
+            
+            // Menu Breakdown
+            VStack {
+                Text("ORDER FOR DELIVERY!")
+                
+                HStack(spacing: 5) {
+                    Button("All") {
+                        categoryName = ""
+                        categorySelected = false
+                    }
+                    .frame(maxWidth: 80, maxHeight: 30)
+                    .font(.system(size: 14))
+                    .fontWeight(.semibold)
+                    .foregroundColor(colorFromHex("2C3C35"))
+                    .background(colorFromHex("E9EBEA").cornerRadius(8))
+                    
+                    ForEach (MenuCategoryNames, id: \.self) { name in
+                        Button(name.capitalized) {
+                            categoryName = name
+                            categorySelected = true
+                        }
+                        .frame(maxWidth: 80, maxHeight: 30)
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundColor(colorFromHex("2C3C35"))
+                        .background(colorFromHex("E9EBEA").cornerRadius(8))
+                    }
+                }
+                .foregroundColor(.white)
+            }
+            .padding([.leading, .trailing, .bottom], 10)
+            
+            Divider()
           
             FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                 List {
@@ -91,7 +127,9 @@ struct Menu: View {
                         }
                     }
                 }
+                .listStyle(.plain)
             }
+            Spacer()
         }
         .onAppear {
             getMenuData()
@@ -117,6 +155,7 @@ struct Menu: View {
                 newDish.image = dish.image
                 newDish.price = dish.price
                 newDish.text = dish.description
+                newDish.category = dish.category
             }
             
             try? viewContext.save()
@@ -136,11 +175,15 @@ struct Menu: View {
     }
     
     func buildPredicate() -> NSPredicate {
-        if searchText.isEmpty {
+        if searchText.isEmpty && categorySelected == false {
             return NSPredicate(value: true)
-        } else {
-            return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
         }
+        
+        if searchText.isEmpty && categorySelected == true {
+            return NSPredicate(format: "category CONTAINS[cd] %@", categoryName)
+        }
+        
+        return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
     }
 }
 
