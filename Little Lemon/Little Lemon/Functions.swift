@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+func isValidEmailFormat(_ email: String) -> Bool {
+    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+}
+
 func colorFromHex(_ hex: String) -> Color {
     var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
