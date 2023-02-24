@@ -10,9 +10,9 @@ import SwiftUI
 struct UserProfile: View {
     @Environment(\.presentationMode) var presentation
     
-    let firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
-    let lastName = UserDefaults.standard.string(forKey: kLastName) ?? ""
-    let email = UserDefaults.standard.string(forKey: kEmail) ?? ""
+    private let firstName = UserDefaults.standard.string(forKey: kFirstName) ?? ""
+    private let lastName = UserDefaults.standard.string(forKey: kLastName) ?? ""
+    private let email = UserDefaults.standard.string(forKey: kEmail) ?? ""
     
     var body: some View {
         VStack {

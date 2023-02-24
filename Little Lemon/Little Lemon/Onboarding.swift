@@ -13,10 +13,10 @@ let kEmail = "email key"
 let kIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
-    @State var firstName: String = ""
-    @State var lastName: String = ""
-    @State var email: String = ""
-    @State var isLoggedIn = false
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var email: String = ""
+    @State private var isLoggedIn = false
     
     var body: some View {
         NavigationView {
