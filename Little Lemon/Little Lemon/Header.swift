@@ -16,7 +16,7 @@ struct Header: View {
                 Image("profile-image-placeholder")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 70)
+                    .frame(width: 50)
                     .padding(.trailing, 20)
             }
             

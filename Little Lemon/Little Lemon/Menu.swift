@@ -22,21 +22,21 @@ struct Menu: View {
                 HStack {
                     Text("Little Lemon")
                         .foregroundColor(colorFromHex("F0C613"))
-                        .font(.system(size: 40))
+                        .font(Font.custom("Georgia", size: 40))
                     Spacer()
                 }
                
                 HStack {
                     Text("Chicago")
                         .foregroundColor(.white)
-                        .font(.system(size: 26))
+                        .font(Font.custom("Georgia", size: 26))
                     Spacer()
                 }
                 
                 HStack {
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
                         .foregroundColor(.white)
-                        .font(.system(size: 16))
+                        .font(Font.custom("Georgia", size: 16))
                         .frame(height: 100)
                     
                     Spacer()
@@ -64,6 +64,8 @@ struct Menu: View {
             // Menu Breakdown
             VStack {
                 Text("ORDER FOR DELIVERY!")
+                    .font(Font.custom("Georgia", size: 18))
+                    .foregroundColor(colorFromHex("394C45"))
                 
                 HStack(spacing: 5) {
                     Button("All") {
@@ -101,17 +103,19 @@ struct Menu: View {
                             VStack(alignment: .leading) {
                                 Text(dish.title ?? "")
                                     .font(.system(size: 20))
+                                    .foregroundColor(colorFromHex("394C45"))
                                     .fontWeight(.bold)
                                     .padding(.bottom, 5)
                                 
                                 Text(dish.text ?? "")
                                     .font(.system(size: 14))
+                                    .foregroundColor(colorFromHex("394C45"))
                                     .padding(.bottom, 5)
                                 
                                 Text("$\(dish.price ?? "")")
                                     .font(.system(size: 20))
-                                    .fontWeight(.bold)
                                     .foregroundColor(colorFromHex("394C45"))
+                                    .fontWeight(.bold)
                             }
                             
                             Spacer()
