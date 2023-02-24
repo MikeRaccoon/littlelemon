@@ -13,23 +13,80 @@ struct Menu: View {
     
     var body: some View {
         VStack {
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("Description")
+            Header()
             
-            TextField("Search menu", text: $searchText)
-                .padding([.leading, .trailing], 20)
-            
+            VStack {
+                HStack {
+                    Text("Little Lemon")
+                        .foregroundColor(colorFromHex("F0C613"))
+                        .font(.system(size: 40))
+                    Spacer()
+                }
+               
+                HStack {
+                    Text("Chicago")
+                        .foregroundColor(.white)
+                        .font(.system(size: 26))
+                    Spacer()
+                }
+                
+                HStack {
+                    Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                        .foregroundColor(.white)
+                        .font(.system(size: 16))
+                        .frame(height: 100)
+                    
+                    Spacer()
+                    
+                    Image("Hero image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 140, height: 140)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .offset(y: -15)
+                }
+                .offset(y: -25)
+                
+                TextField("Search menu", text: $searchText)
+                    .padding(.leading, 10)
+                    .padding([.top, .bottom], 5)
+                    .background(.white)
+                    .offset(y: -25)
+            }
+            .padding([.leading, .trailing], 20)
+            .padding(.top, 10)
+            .padding(.bottom, 5)
+            .background(colorFromHex("394C45"))
+          
             FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) { (dishes: [Dish]) in
                 List {
                     ForEach (dishes) { dish in
                         HStack {
-                            Text("\(dish.title ?? "") \(dish.price ?? "")")
+                            VStack(alignment: .leading) {
+                                Text(dish.title ?? "")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 5)
+                                
+                                Text(dish.text ?? "")
+                                    .font(.system(size: 14))
+                                    .padding(.bottom, 5)
+                                
+                                Text("$\(dish.price ?? "")")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(colorFromHex("394C45"))
+                            }
+                            
+                            Spacer()
                             
                             AsyncImage(url: URL(string: dish.image!)) { image in
                                 image
                                     .resizable()
-                                    .scaledToFit()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Rectangle())
+
                             } placeholder: { ProgressView() }
                         }
                     }
@@ -59,6 +116,7 @@ struct Menu: View {
                 newDish.title = dish.title
                 newDish.image = dish.image
                 newDish.price = dish.price
+                newDish.text = dish.description
             }
             
             try? viewContext.save()

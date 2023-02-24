@@ -9,7 +9,19 @@ import SwiftUI
 
 struct Header: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            HStack {
+                Spacer()
+                
+                Image("profile-image-placeholder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 70)
+                    .padding(.trailing, 20)
+            }
+            
+            Image("Logo")
+        }
     }
 }
 
